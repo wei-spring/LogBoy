@@ -5,7 +5,11 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import me.chunsheng.logboy.http.HttpUtils;
 
 /**
  * Copyright © 2016 edaixi. All Rights Reserved.
@@ -197,13 +201,10 @@ public class LogBoy {
         try {
             ApplicationInfo appInfo = ctx.getPackageManager().getApplicationInfo(ctx.getPackageName(), PackageManager.GET_META_DATA);
 
-            android.util.Log.e("Tag", "开始获取清单文件内容啦");
             if (appInfo != null && appInfo.metaData != null) {
-                android.util.Log.e("TagB", "已经获取清单文件内容啦");
 
                 if (appInfo.metaData.containsKey("log_boy.enable")) {
                     enable = appInfo.metaData.getBoolean("log_boy.enable");
-                    android.util.Log.e("TagC", "获取清单文件内容啦" + enable);
                 }
 
                 if (appInfo.metaData.containsKey("log_boy.level")) {
@@ -228,10 +229,39 @@ public class LogBoy {
 
             }
 
+            DeviceUtil deviceUtil = new DeviceUtil(ctx);
+            StringBuffer sb = new StringBuffer();
+            sb.append("设备:" + deviceUtil.getPhoneName());
+            sb.append(" 设备ID: " + deviceUtil.getDeviceID());
+            sb.append(" 运营商:" + deviceUtil.getCellInfo());
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append(" 应用名称:" + deviceUtil.getAppName());
+            stringBuffer.append(" 版本:" + deviceUtil.getVerName());
+            stringBuffer.append(" 包名:" + deviceUtil.getPackName());
+
+            getDeviceInfo(sb.toString(), stringBuffer.toString());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void getDeviceInfo(String deviceInfo, String appInfo) {
+        try {
+            final Map<String, String> params = new HashMap<>();
+            params.put("device", deviceInfo);
+            params.put("app", appInfo);
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    HttpUtils.httpPost(instance.remoteUrl, params);
+                }
+            }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

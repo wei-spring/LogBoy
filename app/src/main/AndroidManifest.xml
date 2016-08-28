@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.chunsheng.logboy">
+    package="me.chunsheng.logboytest">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -8,7 +13,27 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <meta-data
+            android:name="log_boy.enable"
+            android:value="true" />  <!--是否开启日志，关闭之后，不会输出到logcat也不会输出到远程-->
+        <meta-data
+            android:name="log_boy.level"
+            android:value="DEBUG" />   <!--日志级别(DEBUG|INFO|WARNING|ERROR)-->
+        <meta-data
+            android:name="log_boy.local"
+            android:value="true" />    <!--是否在logcat中打印-->
+        <meta-data
+            android:name="log_boy.remote"
+            android:value="true" />   <!--是否远程打印-->
+        <meta-data
+            android:name="log_boy.remote_interval"
+            android:value="500" />   <!--远程打印时，日志上报间隔，单位毫秒-->
+        <meta-data
+            android:name="log_boy.remote_url"
+            android:value="http://192.168.1.108:8080/" />
+
+        <activity android:name="me.chunsheng.logboytest.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

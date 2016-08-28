@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.DateFormat;
 import java.util.Date;
 
 /**
@@ -59,7 +60,8 @@ public class FormatLogBoy {
             json.put("tag", tag);
             json.put("msg", msg);
             json.put("stack", stack == null ? "" : parseStack(stack));
-            json.put("time", time);
+            DateFormat df5 = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+            json.put("time", df5.format(time));
 
             return json.toString();
 

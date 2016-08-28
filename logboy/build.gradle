@@ -1,5 +1,10 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+version = '1.0.0'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
@@ -23,9 +28,109 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:24.0.0-beta1'
-    testCompile 'junit:junit:4.12'
 }
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+def siteUrl = 'https://github.com/hpu-spring87/LogBoy'
+def gitUrl = 'https://github.com/hpu-spring87/LogBoy.git'
+group = 'me.chunsheng.logboy'
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging 'aar'
+            groupId 'me.chunsheng.logboy'
+            artifactId 'logboy'
+
+            name 'Logboy'
+            description 'A Log Lib for show in browse or save in servers...'
+            url siteUrl
+            inceptionYear '2016'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection gitUrl
+                url siteUrl
+
+            }
+            developers {
+                developer {
+                    name 'wei-spring'
+                    email 'weichunsheng3611@gmail.com'
+                }
+            }
+        }
+
+    }
+}
+
+// Bintray
+
+//获取local.propertes的信息
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = 'hpu-spring87'
+    key = '956083bb91824d0574070a6e6067f7c5aa5aa5c8'
+
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "Logboy"
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+        version {
+            name = '1.0.0'
+            desc = "init release"
+            vcsTag = '1.0.0'
+        }
+    }
+
+}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task findConventions << {
+    println project.getConvention()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
