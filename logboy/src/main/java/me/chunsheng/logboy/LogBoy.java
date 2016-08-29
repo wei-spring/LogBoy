@@ -24,13 +24,14 @@ public class LogBoy {
 
     private List<ILogBoy> logPrinters;
     private boolean isInited = false;
+    private static Context mContext;
 
-    private boolean enable = false;
-    private String level = FormatLogBoy.FORMAT_DEBUG;
-    private boolean local = true;
-    private boolean remote = true;
-    private int remoteInterval = 1000;
-    private String remoteUrl = "";
+    private static boolean enable = false;
+    private static String level = FormatLogBoy.FORMAT_DEBUG;
+    private static boolean local = true;
+    private static boolean remote = true;
+    private static int remoteInterval = 1000;
+    private static String remoteUrl = "";
 
     private LogBoy() {
         logPrinters = new ArrayList<>();
@@ -106,19 +107,14 @@ public class LogBoy {
     }
 
 
-    /**
-     * 在Application的attachBaseContext中调用
-     *
-     * @param context
-     */
+    //在Application的attachBaseContext中调用
     public static void init(Context context) {
 
         try {
-
+            mContext = context;
             if (instance.isInited) {
                 return;
             }
-
             instance.parseConfig(context);
 
             instance.logPrinters.clear();
@@ -240,11 +236,47 @@ public class LogBoy {
             stringBuffer.append(" 版本:" + deviceUtil.getVerName());
             stringBuffer.append(" 包名:" + deviceUtil.getPackName());
 
-            getDeviceInfo(sb.toString(), stringBuffer.toString());
+            if (remoteUrl.length() > 3)
+                getDeviceInfo(sb.toString(), stringBuffer.toString());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //设置是否LogBoy可用
+    public static void setEnable(boolean isEnable) {
+        enable = isEnable;
+    }
+
+
+    //设置日志级别
+    public static void setLevel(String levelStr) {
+        level = levelStr;
+    }
+
+
+    //设置是否本地控制台打印
+    public static void setLocalEnable(boolean isLoaclEnable) {
+        local = isLoaclEnable;
+    }
+
+
+    //设置远程日志是否可用
+    public static void setRemoteEnable(boolean isRemoteEnable) {
+        remote = isRemoteEnable;
+
+    }
+
+    //设置远程服务器上传时间间隔,毫秒
+    public void setRemoteInterval(int isRemoteTime) {
+        remoteInterval = isRemoteTime;
+    }
+
+
+    //设置远程服务器地址和端口号
+    public static void setRemoteUrl(String remoteUrlStr) {
+        remoteUrl = remoteUrlStr;
     }
 
     public void getDeviceInfo(String deviceInfo, String appInfo) {
@@ -263,5 +295,4 @@ public class LogBoy {
             e.printStackTrace();
         }
     }
-
 }

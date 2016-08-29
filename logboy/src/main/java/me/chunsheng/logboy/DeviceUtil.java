@@ -23,16 +23,12 @@ public class DeviceUtil {
         this.mContext = mContext;
     }
 
-    /**
-     * 获取应用包名称
-     */
+    //获取应用包名称
     public String getPackName() {
         return mContext.getPackageName();
     }
 
-    /**
-     * 获取应用版本名称
-     */
+    //获取应用版本名称
     public String getVerName() {
         String verName = "";
         try {
@@ -42,9 +38,7 @@ public class DeviceUtil {
         return verName;
     }
 
-    /**
-     * 获取应用版本号
-     */
+    //获取应用版本号
     public int getVerCode() {
         int versionCode = 0;
         try {
@@ -55,9 +49,7 @@ public class DeviceUtil {
         return versionCode;
     }
 
-    /**
-     * 获取应用名称
-     */
+    //获取应用名称
     public String getAppName() {
         String appName = "";
         try {
@@ -69,19 +61,14 @@ public class DeviceUtil {
         return appName;
     }
 
-    /**
-     * 获取手机名字,系统版本号
-     */
+    // 获取手机名字,系统版本号
     public String getPhoneName() {
         return android.os.Build.MANUFACTURER + " 系统版本号:" + android.os.Build.VERSION.RELEASE;
     }
 
-    /**
-     * 获取移动用户标志，IMSI
-     * <p>
-     * 用到的权限：
-     * <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-     */
+    //获取移动用户标志，IMSI
+    //用到的权限：
+    // <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     public String getSubscriberId() {
         String strResult = "";
         TelephonyManager telephonyManager = (TelephonyManager) mContext
@@ -92,12 +79,9 @@ public class DeviceUtil {
         return strResult;
     }
 
-    /**
-     * 获取设备ID
-     * <p>
-     * 用到的权限：
-     * <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-     */
+    //获取设备ID
+    //用到的权限：
+    //<uses-permission android:name="android.permission.READ_PHONE_STATE" />
     public String getDeviceID() {
         String strResult = null;
         TelephonyManager telephonyManager = (TelephonyManager) mContext
@@ -112,12 +96,9 @@ public class DeviceUtil {
         return strResult;
     }
 
-    /**
-     * 获取SIM卡号
-     * <p>
-     * 用到的权限：
-     * <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-     */
+    //获取SIM卡号
+    //用到的权限：
+    //<uses-permission android:name="android.permission.READ_PHONE_STATE" />
     public String getSim() {
         String strResult = "";
         TelephonyManager telephonyManager = (TelephonyManager) mContext
@@ -128,14 +109,10 @@ public class DeviceUtil {
         return strResult;
     }
 
-    /**
-     * 获取Wifi Mac地址
-     * <p>
-     * 要想获取更多Wifi相关信息请查阅WifiInfo资料
-     * <p>
-     * 用到的权限：
-     * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-     */
+    //获取Wifi Mac地址
+    //要想获取更多Wifi相关信息请查阅WifiInfo资料
+    //用到的权限：
+    //<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     public String getMac() {
 
         WifiManager wifiManager = (WifiManager) mContext
@@ -147,10 +124,7 @@ public class DeviceUtil {
         return null;
     }
 
-    /**
-     * 服务商名称：
-     * 例如：中国移动、联通
-     */
+    //服务商名称,例如：中国移动、联通
     public String getCellInfo() {
         TelephonyManager tm = null;
         try {

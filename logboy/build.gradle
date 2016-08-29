@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
-version = '1.0.0'
+version = '1.0.1'
 
 android {
     compileSdkVersion 24
@@ -107,9 +107,9 @@ bintray {
         licenses = ["Apache-2.0"]
         publish = true
         version {
-            name = '1.0.0'
+            name = '1.0.1'
             desc = "init release"
-            vcsTag = '1.0.0'
+            vcsTag = '1.0.1'
         }
     }
 

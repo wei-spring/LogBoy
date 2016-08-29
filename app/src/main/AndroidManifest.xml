@@ -29,9 +29,9 @@
         <meta-data
             android:name="log_boy.remote_interval"
             android:value="500" />   <!--远程打印时，日志上报间隔，单位毫秒-->
-        <meta-data
-            android:name="log_boy.remote_url"
-            android:value="http://192.168.1.108:8080/" />
+        <!--<meta-data-->
+            <!--android:name="log_boy.remote_url"-->
+            <!--android:value="http://192.168.1.108:8080/" />-->
 
         <activity android:name="me.chunsheng.logboytest.MainActivity">
             <intent-filter>
