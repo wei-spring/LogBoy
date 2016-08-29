@@ -40,14 +40,14 @@ Logboy是一个日志管理库，可以本地控制台输出日志亦可远程�
 
 1. 工程demo运行效果图:
 
-![](logboy_screen_1.jpg)
+<img src="/images/logboy_screen_1.jpg" width="425" height="480" />
 
-![](logboy_screen_2.jpg)
-
+<img src="/images/logboy_screen_2.jpg" width="425" height="480" />
 
 2. 远程服务器运行效果图：
 
-![](logboy_print.jpg)
+
+<img src="/images/logboy_print.jpg" width="1200" height="800" />
 
 
 ## License
