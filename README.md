@@ -47,7 +47,7 @@ LogBoy.e("TagBoyE:", i + "Tomorrow is never clear. Our time is here.");
 
 远程服务器运行效果图:
 
-![]("/images/logboy_print.jpg")
+<img src="/images/logboy_print.jpg"/>
 
 
 ## License
