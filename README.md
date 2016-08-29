@@ -46,7 +46,7 @@ LogBoy.e("TagBoyE:", i + "Tomorrow is never clear. Our time is here.");
 
 2. 远程服务器运行效果图:
 
-<img src="/images/logboy_print.jpg" width="1200" height="800" />
+<img src="/images/logboy_print.jpg" width="1400" height="780" />
 
 
 ## License
