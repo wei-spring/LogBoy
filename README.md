@@ -17,14 +17,13 @@ Logboy是一个日志管理库，可以本地控制台输出日志亦可远程�
 
  2. Android项目使用：
 
- ```
+ ```Java
 compile 'me.chunsheng.logboy:logboy:1.0.2'
-
  ```
 
  在Application或者Activity的OnCreate方法初始化：
 
- ```
+ ```Java
 //初始化如下:输入自己的IP+port
 LogBoy.setRemoteUrl("http://192.168.1.108:8080/");
 LogBoy.init(this);
@@ -33,7 +32,6 @@ LogBoy.init(this);
 LogBoy.d("TagBoyD::", i + "Man cannot discover new oceans unless he has courage to lose sight of the shore. —Gide");
 LogBoy.w("TagBoyW::", i + "Towering genius disdains a beaten path. It seeks regions hitherto unexplored. —Lincoln ");
 LogBoy.e("TagBoyE:", i + "Tomorrow is never clear. Our time is here.");
-
  ```
 
 > 有图有真相
