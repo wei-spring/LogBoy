@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Logboy : Logboy是一个日志管理库，可以本地控制台输出日志亦可远程输出">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Logboy</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/hpu-spring87/LogBoy">View on GitHub</a>
+
+          <h1 id="project_title">Logboy</h1>
+          <h2 id="project_tagline">Logboy是一个日志管理库，可以本地控制台输出日志亦可远程输出</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/hpu-spring87/LogBoy/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/hpu-spring87/LogBoy/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="logboy" class="anchor" href="#logboy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logboy</h1>
+
+<blockquote>
+<p>关于:</p>
+</blockquote>
+
+<p>Logboy是一个日志管理库，可以本地控制台输出日志亦可远程输出，
+通过搭建本地的Python环境，可以在本地浏览器查看输出的日志.</p>
+
+<blockquote>
+<p>使用：</p>
+</blockquote>
+
+<ol>
+<li>
+<p>首先本地搭建python环境，这里使用时轻量级的web.py作为本地的服务器：</p>
+
+<ul>
+<li>Mac &amp; Windows，配置Python开发环境（Mac系统自带Python环境）</li>
+<li>下载：wget <a href="http://webpy.org/static/web.py-0.37.tar.gz">http://webpy.org/static/web.py-0.37.tar.gz</a>
+</li>
+<li>解压，进入目录，安装：python setup.py install</li>
+<li>然后运行Android工程中python目录下的logconsole.py, 访问http://localhost:8080/</li>
+</ul>
+</li>
+<li>
+<p>Android项目使用：</p>
+
+<div class="highlight highlight-source-java"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>me.chunsheng.logboy:logboy:1.0.2<span class="pl-pds">'</span></span></pre></div>
+
+<p>在Application或者Activity的OnCreate方法初始化：</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">//初始化如下:输入自己的IP+port</span>
+<span class="pl-smi">LogBoy</span><span class="pl-k">.</span>setRemoteUrl(<span class="pl-s"><span class="pl-pds">"</span>http://192.168.1.108:8080/<span class="pl-pds">"</span></span>);
+<span class="pl-smi">LogBoy</span><span class="pl-k">.</span>init(<span class="pl-v">this</span>);
+
+<span class="pl-c">//输出日志，和系统使用方法一样，分Tag ,Msg 以及日志级别(DEBUG|INFO|WARNING|ERROR)</span>
+<span class="pl-smi">LogBoy</span><span class="pl-k">.</span>d(<span class="pl-s"><span class="pl-pds">"</span>TagBoyD::<span class="pl-pds">"</span></span>, i <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>Man cannot discover new oceans unless he has courage to lose sight of the shore. —Gide<span class="pl-pds">"</span></span>);
+<span class="pl-smi">LogBoy</span><span class="pl-k">.</span>w(<span class="pl-s"><span class="pl-pds">"</span>TagBoyW::<span class="pl-pds">"</span></span>, i <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>Towering genius disdains a beaten path. It seeks regions hitherto unexplored. —Lincoln <span class="pl-pds">"</span></span>);
+<span class="pl-smi">LogBoy</span><span class="pl-k">.</span>e(<span class="pl-s"><span class="pl-pds">"</span>TagBoyE:<span class="pl-pds">"</span></span>, i <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>Tomorrow is never clear. Our time is here.<span class="pl-pds">"</span></span>);</pre></div>
+</li>
+</ol>
+
+<blockquote>
+<p>有图有真相</p>
+</blockquote>
+
+<p>下面截图包含demo运行和本地浏览器两部分：</p>
+
+<ol>
+<li>工程demo运行效果图:</li>
+</ol>
+
+<p><img src="http://images2015.cnblogs.com/blog/535280/201608/535280-20160829210234152-717245428.jpg" width="425" height="480"></p>
+
+<p><img src="http://images2015.cnblogs.com/blog/535280/201608/535280-20160829210322683-22487554.jpg" width="425" height="480"></p>
+
+<p>远程服务器运行效果图:</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/535280/201608/535280-20160829210407027-1974820905.jpg"></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>LogBoy is made available under the <a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></p>
+
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble with LogBoy?<a href="http://chunsheng.me">Contact support</a> and I’ll help you sort it out.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Logboy maintained by <a href="https://github.com/hpu-spring87">hpu-spring87</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
