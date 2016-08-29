@@ -37,16 +37,17 @@ LogBoy.e("TagBoyE:", i + "Tomorrow is never clear. Our time is here.");
 > 有图有真相
 
 
+下面截图包含demo运行和本地浏览器两部分：
+
 1. 工程demo运行效果图:
 
 <img src="/images/logboy_screen_1.jpg" width="425" height="480" />
 
 <img src="/images/logboy_screen_2.jpg" width="425" height="480" />
 
+远程服务器运行效果图:
 
-2. 远程服务器运行效果图:
-
-<img src="/images/logboy_print.jpg" width="1400" height="780" />
+![]("/images/logboy_print.jpg")
 
 
 ## License
