@@ -18,21 +18,21 @@ Logboy是一个日志管理库，可以本地控制台输出日志亦可远程�
  2. Android项目使用：
 
  ```
- compile 'me.chunsheng.logboy:logboy:1.0.2'
+    compile 'me.chunsheng.logboy:logboy:1.0.2'
 
  ```
 
  在Application或者Activity的OnCreate方法初始化：
 
  ```
-        //初始化如下:输入自己的IP+port
-        LogBoy.setRemoteUrl("http://192.168.1.108:8080/");
-        LogBoy.init(this);
+    //初始化如下:输入自己的IP+port
+    LogBoy.setRemoteUrl("http://192.168.1.108:8080/");
+    LogBoy.init(this);
 
-        //输出日志，和系统使用方法一样，分Tag ,Msg 以及日志级别(DEBUG|INFO|WARNING|ERROR)
-        LogBoy.d("TagBoyD::", i + "Man cannot discover new oceans unless he has courage to lose sight of the shore. —Gide");
-        LogBoy.w("TagBoyW::", i + "Towering genius disdains a beaten path. It seeks regions hitherto unexplored. —Lincoln ");
-        LogBoy.e("TagBoyE:", i + "Tomorrow is never clear. Our time is here.");
+    //输出日志，和系统使用方法一样，分Tag ,Msg 以及日志级别(DEBUG|INFO|WARNING|ERROR)
+    LogBoy.d("TagBoyD::", i + "Man cannot discover new oceans unless he has courage to lose sight of the shore. —Gide");
+    LogBoy.w("TagBoyW::", i + "Towering genius disdains a beaten path. It seeks regions hitherto unexplored. —Lincoln ");
+    LogBoy.e("TagBoyE:", i + "Tomorrow is never clear. Our time is here.");
 
  ```
 
@@ -44,7 +44,7 @@ Logboy是一个日志管理库，可以本地控制台输出日志亦可远程�
 
 <img src="/images/logboy_screen_2.jpg" width="425" height="480" />
 
-2. 远程服务器运行效果图：
+2. 远程服务器运行效果图:
 
 
 <img src="/images/logboy_print.jpg" width="1200" height="800" />
